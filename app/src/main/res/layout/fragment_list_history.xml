@@ -8,14 +8,14 @@
 
     <TextView
         android:id="@+id/datehis"
-        android:layout_marginTop="10dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="date"
-        android:gravity="center"/>
+        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
+
         android:id="@+id/recyhlist"
         android:layout_width="match_parent"
         android:layout_height="0dp"

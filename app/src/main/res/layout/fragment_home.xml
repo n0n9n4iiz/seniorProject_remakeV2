@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFF7F9"
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -58,7 +59,7 @@
                 <ImageView
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:background="@drawable/circlebg"
+                    android:background="@drawable/circlebg_1"
                     android:padding="10dp"
                     android:src="@drawable/ic_map_black_24dp" />
 
@@ -100,7 +101,7 @@
                 <ImageView
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:background="@drawable/circlebg"
+                    android:background="@drawable/circlebg_2"
                     android:padding="10dp"
                     android:src="@drawable/ic_list_black_24dp" />
 
@@ -150,7 +151,7 @@
                 <ImageView
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:background="@drawable/circlebg"
+                    android:background="@drawable/circlebg_3"
                     android:padding="10dp"
                     android:src="@drawable/ic_date_range_black_24dp" />
 
@@ -193,7 +194,7 @@
                 <ImageView
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:background="@drawable/circlebg"
+                    android:background="@drawable/circlebg_4"
                     android:padding="10dp"
                     android:src="@drawable/ic_history_black_24dp" />
 
