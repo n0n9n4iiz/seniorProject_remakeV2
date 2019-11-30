@@ -43,6 +43,7 @@ public class AddnewActivity extends Fragment implements DatePickerDialog.OnDateS
     Toolbar toolbar;
 View v;
     static String room;
+    Splash splash = new Splash();
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://endproject62.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -63,8 +64,8 @@ View v;
     private RecyclerView rc;
     //spinner
     private Spinner spiner;
-    private ArrayList<DataRoom> arrnameroom = new ArrayList<>();
-    private ArrayAdapter<DataRoom> adapnameroom;
+    //private ArrayList<String> arrnameroom = new ArrayList<>();
+    private ArrayAdapter<String> adapnameroom;
 
     public AddnewActivity(int id,int hn) {
         // Required empty public constructor
@@ -192,27 +193,10 @@ View v;
         bdate.setText(currentDateString);
     }
     public void getListRoom() {
+              //  arrnameroom = new ArrayList<String>(splash.getListSpin());
+                adapnameroom = new ArrayAdapter<String>(getContext(),android.R.layout.simple_dropdown_item_1line,splash.getListSpin());
+                spiner.setAdapter(adapnameroom);
 
-        Call<List<DataRoom>> call2 = api2.getNameRoom();
-        call2.enqueue(new Callback<List<DataRoom>>() {
-            @Override
-            public void onResponse(Call<List<DataRoom>> call, Response<List<DataRoom>> response) {
-                arrnameroom = new ArrayList<DataRoom>(response.body());
-                try{
-                    adapnameroom = new ArrayAdapter<DataRoom>(getContext(),android.R.layout.simple_dropdown_item_1line,arrnameroom);
-                    spiner.setAdapter(adapnameroom);
-                }catch (Exception e){
-                    System.out.println(e);
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<DataRoom>> call, Throwable t) {
-
-            }
-        });
         spiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
