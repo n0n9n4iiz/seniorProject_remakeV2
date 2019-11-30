@@ -5,12 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainMap"
-    tools:showIn="@layout/fragment_setting">
-
-
-
-
+    tools:context=".MainMap2"
+    tools:showIn="@layout/fragment_main_map2">
     <LinearLayout
 
         android:id="@+id/rl"

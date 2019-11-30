@@ -37,7 +37,9 @@ public class Drawline {
             //draw
             // Initialize a new Bitmap object
             setBitmap(BitmapFactory.decodeResource(getmResources(), R.drawable.mapforuse));
-            setBitmap(getBitmap().copy(Bitmap.Config.ARGB_8888, true));
+            try {
+                setBitmap(getBitmap().copy(Bitmap.Config.ARGB_8888, true));
+            }catch (Exception e){}
             Bitmap bitmapC = BitmapFactory.decodeResource(mResources,R.drawable.currentnew);
 //
            Bitmap bitmapM = BitmapFactory.decodeResource(mResources,R.drawable.marknew);

@@ -242,7 +242,7 @@ View v;
                     }
                 }
                 System.out.println("Success");
-                s = new SwipeRecyclerViewAdapter(context,arrdatanew);
+                s = new SwipeRecyclerViewAdapter(context,arrdatanew,AddnewActivity.this);
                 try {
                     MyActivity.mRecyclerView.setAdapter(s);
                 }catch (Exception e){

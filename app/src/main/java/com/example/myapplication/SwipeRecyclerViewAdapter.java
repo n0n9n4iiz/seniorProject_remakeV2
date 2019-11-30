@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daimajia.swipe.SwipeLayout;
@@ -32,11 +34,20 @@ public class SwipeRecyclerViewAdapter extends RecyclerSwipeAdapter<SwipeRecycler
     int id;
     private Context mContext;
     static ArrayList<Data> studentList;
+    MyActivity fragment;
+    AddnewActivity fragment2;
+    FragmentTransaction fragmentTransaction;
 
-
-    public SwipeRecyclerViewAdapter(Context context, ArrayList<Data> objects) {
+    public SwipeRecyclerViewAdapter(Context context, ArrayList<Data> objects, MyActivity fragment) {
         this.mContext = context;
         this.studentList = objects;
+        this.fragment = fragment;
+
+    }
+    public SwipeRecyclerViewAdapter(Context context, ArrayList<Data> objects, AddnewActivity fragment2) {
+        this.mContext = context;
+        this.studentList = objects;
+        this.fragment2 = fragment2;
 
     }
 
@@ -117,11 +128,15 @@ public class SwipeRecyclerViewAdapter extends RecyclerSwipeAdapter<SwipeRecycler
             @Override
             public void onClick(View view) {
                 System.out.println(item.getRoom());
-//               // Toast.makeText(view.getContext(), "Clicked on Share " + viewHolder.Name.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "Clicked on Share " + viewHolder.Name.getText().toString(), Toast.LENGTH_SHORT).show();
 //                Context context = view.getContext();
 //                Intent intent = new Intent(context, SelectCurrentLocation.class);
 //                intent.putExtra("room",item.getRoom());
 //                context.startActivity(intent);
+                fragmentTransaction = fragment.getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new SelectCurrentLocation(item.getRoom())).addToBackStack(null);
+                fragmentTransaction.commit();
+
             }
         });
 

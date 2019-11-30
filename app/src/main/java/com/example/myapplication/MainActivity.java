@@ -44,6 +44,7 @@ NavigationView navigationView;
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     API api = retrofit.create(API.class);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,7 @@ NavigationView navigationView;
         tname = (TextView) headerView.findViewById(R.id.name);
         hnn = (TextView) headerView.findViewById(R.id.hnnumber);
 
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -82,8 +84,10 @@ NavigationView navigationView;
 
                     break;
                     //for map
-                    case R.id.set_id : fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.main_container,new MainMap()).addToBackStack(null);
+                    case R.id.set_id :
+
+                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.main_container,new MainMap2()).addToBackStack(null);
                     fragmentTransaction.commit();
                     getSupportActionBar().setTitle("Map");
 //                    menuItem.setChecked(true);

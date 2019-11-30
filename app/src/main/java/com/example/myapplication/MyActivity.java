@@ -108,7 +108,7 @@ View v;
 //                    tvEmptyTextView.setVisibility(View.GONE);
 //                }
 
-                SwipeRecyclerViewAdapter mAdapter = new SwipeRecyclerViewAdapter(context, mDataSet);
+                SwipeRecyclerViewAdapter mAdapter = new SwipeRecyclerViewAdapter(context, mDataSet,MyActivity.this);
                 SwipeRecyclerViewAdapter setid = new SwipeRecyclerViewAdapter(idlogin);
 
                 ((SwipeRecyclerViewAdapter) mAdapter).setMode(Attributes.Mode.Single);
