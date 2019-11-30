@@ -232,8 +232,8 @@ public class MainMap2 extends Fragment {
                 System.out.println("positionc"+position);
                 if(position==0){
 
-                    b1=0;
-                    shortest();
+                  b1=0;
+                   shortest();
                 }else {
                     Toast.makeText(getContext(),
                             "Select : " + curentLocationSpinner.getSelectedItem(),
@@ -260,9 +260,8 @@ public class MainMap2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 System.out.print("positiond"+position);
                 if(position==0){
-
-                    b2=0;
-                   shortest();
+                        b2=0;
+                        shortest();
                 }else {
                     Toast.makeText(getContext(),
                             "Select : " + destinationSpinner.getSelectedItem(),
@@ -498,6 +497,8 @@ public class MainMap2 extends Fragment {
                     if (d1.getNewData2().size() <= 2) {
 
                         nextbutton.setVisibility(View.GONE);
+
+
                     }
                     j = j + 1;
 
@@ -525,23 +526,32 @@ public class MainMap2 extends Fragment {
                 }
             });
 
-        }else if(b2==1&&b1==0){
+        } else if(b2==1&&b1==0){
             Toast.makeText(getContext(),
                     "กรุณาเลือกตำแหน่งปัจจุบัน",
                     Toast.LENGTH_SHORT).show();
+            mImageView.setImageResource(R.drawable.mapforuse);
+            nextbutton.setText(R.string.next_text);
+            arrow.setImageResource(android.R.color.transparent);
+            directionstep.setText("");
         }else if(b1==1&&b2==0){
             Toast.makeText(getContext(),
                     "กรุณาเลือกจุดหมาย",
                     Toast.LENGTH_SHORT).show();
-
-        }else{
+            mImageView.setImageResource(R.drawable.mapforuse);
+            nextbutton.setText(R.string.next_text);
+            arrow.setImageResource(android.R.color.transparent);
+            directionstep.setText("");
+        }else {
             Toast.makeText(getContext(),
                     "กรุณาเลือกตำแหน่งปัจจุบันและจุดหมาย",
                     Toast.LENGTH_SHORT).show();
-                    startPointID=0;
-                    endPointID=0;
 
-                    shortest();
+            mImageView.setImageResource(R.drawable.mapforuse);
+            nextbutton.setText(R.string.next_text);
+            arrow.setImageResource(android.R.color.transparent);
+            directionstep.setText("");
+
 
         }
 
@@ -565,7 +575,9 @@ public class MainMap2 extends Fragment {
         if(i>=d1.getDirectAr2().size()){
             String ss="ถึงจุดหมายของคุณแล้ว";
             arrow.setImageResource(android.R.color.transparent);
-
+            MyTTS.getInstance(getContext())
+                    .setEngine("com.google.android.tts").setLocale(new Locale("th"))
+                    .speak(ss);
             directionstep.setText(ss);
             nextbutton.setVisibility(View.GONE);
         }
