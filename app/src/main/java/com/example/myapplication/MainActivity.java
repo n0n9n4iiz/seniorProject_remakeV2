@@ -106,11 +106,14 @@ NavigationView navigationView;
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 switch (menuItem.getItemId()){
+
                     case R.id.home_id :
+                        onBackPressed();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_container,new HomeFragment(idlogin,hn)).addToBackStack(null);
                     fragmentTransaction.commit();
@@ -122,7 +125,7 @@ NavigationView navigationView;
                     break;
                     //for map
                     case R.id.set_id :
-                   onBackPressed();
+                    onBackPressed();
 
                      fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_container,new MainMap2()).addToBackStack(null);
@@ -134,6 +137,7 @@ NavigationView navigationView;
                     break;
 
                     case R.id.other_id :
+                        onBackPressed();
                     System.out.println(idlogin);
                     System.out.println(hn);
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -146,6 +150,7 @@ NavigationView navigationView;
                     break;
 
                     case R.id.maa :
+                        onBackPressed();
                         System.out.println(idlogin);
                         System.out.println(hn);
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();

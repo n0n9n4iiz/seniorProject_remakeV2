@@ -11,6 +11,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -99,7 +100,11 @@ public class MainMap2 extends Fragment {
                 b1=1;
                 b2=1;
                 shortest();
-
+                ArrayList<String> aaa = new ArrayList<>();
+                aaa.add("QR");
+                ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, aaa);
+                arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                curentLocationSpinner.setAdapter(arrayAdapter2);
 
 
 
@@ -175,7 +180,7 @@ public class MainMap2 extends Fragment {
 
         a1.setEnd(endPointID);
         System.out.println("mainlist"+listSpin);
-
+listSpin=s.getListSpin();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, s.getListSpin());
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         curentLocationSpinner.setAdapter(arrayAdapter);
@@ -225,6 +230,17 @@ public class MainMap2 extends Fragment {
             public void onClick(View view) {
             startScanQR();
             }
+        });
+        curentLocationSpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, listSpin);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                curentLocationSpinner.setAdapter(arrayAdapter);
+                return false;
+            }
+
+
         });
         curentLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -530,6 +546,16 @@ public class MainMap2 extends Fragment {
             Toast.makeText(getContext(),
                     "กรุณาเลือกตำแหน่งปัจจุบัน",
                     Toast.LENGTH_SHORT).show();
+            path.clear();
+            a1.getNewData().clear();
+            a1.getNewData2().clear();
+
+            d1.getPath().clear();
+            d1.getNewData2().clear();
+            d1.getDirectAr().clear();
+            d1.getDirectAr2().clear();
+            d1.getDistancefordirect().clear();
+
             mImageView.setImageResource(R.drawable.mapforuse);
             nextbutton.setText(R.string.next_text);
             arrow.setImageResource(android.R.color.transparent);
@@ -538,6 +564,16 @@ public class MainMap2 extends Fragment {
             Toast.makeText(getContext(),
                     "กรุณาเลือกจุดหมาย",
                     Toast.LENGTH_SHORT).show();
+            path.clear();
+            a1.getNewData().clear();
+            a1.getNewData2().clear();
+
+            d1.getPath().clear();
+            d1.getNewData2().clear();
+            d1.getDirectAr().clear();
+            d1.getDirectAr2().clear();
+            d1.getDistancefordirect().clear();
+
             mImageView.setImageResource(R.drawable.mapforuse);
             nextbutton.setText(R.string.next_text);
             arrow.setImageResource(android.R.color.transparent);
@@ -546,6 +582,15 @@ public class MainMap2 extends Fragment {
             Toast.makeText(getContext(),
                     "กรุณาเลือกตำแหน่งปัจจุบันและจุดหมาย",
                     Toast.LENGTH_SHORT).show();
+            path.clear();
+            a1.getNewData().clear();
+            a1.getNewData2().clear();
+
+            d1.getPath().clear();
+            d1.getNewData2().clear();
+            d1.getDirectAr().clear();
+            d1.getDirectAr2().clear();
+            d1.getDistancefordirect().clear();
 
             mImageView.setImageResource(R.drawable.mapforuse);
             nextbutton.setText(R.string.next_text);
