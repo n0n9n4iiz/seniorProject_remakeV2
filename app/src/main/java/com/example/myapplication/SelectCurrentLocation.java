@@ -169,10 +169,19 @@ public class SelectCurrentLocation extends Fragment {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+    IntentIntegrator integrator;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        integrator  = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
+        // use forSupportFragment or forFragment method to use fragments instead of activity
+
+    }
     //start scan
-    final Activity activity = getActivity();
+//    final Activity activity = getActivity();
     public void startScanQR() {
-        IntentIntegrator integrator = new IntentIntegrator(activity);
+
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scan");
         integrator.setCameraId(0);

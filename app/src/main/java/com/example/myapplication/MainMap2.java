@@ -27,6 +27,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -101,15 +102,25 @@ public class MainMap2 extends Fragment {
 
 
 
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+    IntentIntegrator integrator;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        integrator  = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
+        // use forSupportFragment or forFragment method to use fragments instead of activity
+
+    }
     //start scan
-    final Activity activity = getActivity();
+//    final Activity activity = getActivity();
     public void startScanQR() {
-        IntentIntegrator integrator = new IntentIntegrator(activity);
+
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         integrator.setPrompt("Scan");
         integrator.setCameraId(0);
@@ -151,11 +162,8 @@ public class MainMap2 extends Fragment {
 
         curentLocationSpinner = v.findViewById(R.id.currentspinner);
         destinationSpinner = v.findViewById(R.id.destspinner);
-//        roomnametxt=findViewById(R.id.roomnametxt);
-//        Bundle bundle = getIntent().getExtras();
 
-//        listSpin = bundle.getStringArrayList("listSpin");
-        listSpin.add(0,"กรุณาเลือก");
+
         String nameAll="";
         for (int i=0;i<listSpin.size();i++){
             nameAll= nameAll + "  " +listSpin.get(i) ;
@@ -210,15 +218,22 @@ public class MainMap2 extends Fragment {
 
 
         arrow =  v.findViewById(R.id.direction_arrow);
+        Button cQRbtn=  v.findViewById(R.id.cQRbtn);
+        cQRbtn.setOnClickListener(new View.OnClickListener() {
 
-
+            @Override
+            public void onClick(View view) {
+            startScanQR();
+            }
+        });
         curentLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 System.out.println("positionc"+position);
                 if(position==0){
-//                    shortest();
+
                     b1=0;
+                    shortest();
                 }else {
                     Toast.makeText(getContext(),
                             "Select : " + curentLocationSpinner.getSelectedItem(),
@@ -245,8 +260,9 @@ public class MainMap2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 System.out.print("positiond"+position);
                 if(position==0){
-//                    shortest();
+
                     b2=0;
+                   shortest();
                 }else {
                     Toast.makeText(getContext(),
                             "Select : " + destinationSpinner.getSelectedItem(),
@@ -509,7 +525,26 @@ public class MainMap2 extends Fragment {
                 }
             });
 
-        }else{}
+        }else if(b2==1&&b1==0){
+            Toast.makeText(getContext(),
+                    "กรุณาเลือกตำแหน่งปัจจุบัน",
+                    Toast.LENGTH_SHORT).show();
+        }else if(b1==1&&b2==0){
+            Toast.makeText(getContext(),
+                    "กรุณาเลือกจุดหมาย",
+                    Toast.LENGTH_SHORT).show();
+
+        }else{
+            Toast.makeText(getContext(),
+                    "กรุณาเลือกตำแหน่งปัจจุบันและจุดหมาย",
+                    Toast.LENGTH_SHORT).show();
+                    startPointID=0;
+                    endPointID=0;
+
+                    shortest();
+
+        }
+
     }
 
 
@@ -620,5 +655,20 @@ public class MainMap2 extends Fragment {
 //        d1.getDistancefordirect().clear();
 //
 //    }
+public boolean onBackPressed() {
+            path.clear();
+        a1.getNewData().clear();
+        a1.getNewData2().clear();
+
+        d1.getPath().clear();
+        d1.getNewData2().clear();
+        d1.getDirectAr().clear();
+        d1.getDirectAr2().clear();
+        d1.getDistancefordirect().clear();
+
+
+    System.out.println("backkkkkkkkkkkkkkkkkkkkk88");
+        return false;
+}
 
 }

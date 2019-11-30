@@ -46,6 +46,43 @@ NavigationView navigationView;
     API api = retrofit.create(API.class);
 
     @Override
+    public void onBackPressed() {
+
+        List fragmentList = getSupportFragmentManager().getFragments();
+
+        boolean handled = false;
+        for(Object f : fragmentList) {
+            if(f instanceof MainMap2) {
+                handled = ((MainMap2)f).onBackPressed();
+//                System.out.println("backkkkkkkkkkkkkkkkkkkkk1");
+                if(handled) {
+                    System.out.println("backkkkkkkkkkkkkkkkkkkkk2");
+
+
+
+                    break;
+                }
+            }
+            if(f instanceof MapFromList) {
+                handled = ((MapFromList)f).onBackPressed();
+//                System.out.println("backkkkkkkkkkkkkkkkkkkkk1");
+                if(handled) {
+                    System.out.println("Mapfrommlisssss");
+
+
+
+                    break;
+                }
+            }
+
+        }
+
+        if(!handled) {
+            System.out.println("backkkkkkkkkkkkkkkkkkkkk3");
+            super.onBackPressed();
+        }
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -85,6 +122,7 @@ NavigationView navigationView;
                     break;
                     //for map
                     case R.id.set_id :
+                   onBackPressed();
 
                      fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_container,new MainMap2()).addToBackStack(null);

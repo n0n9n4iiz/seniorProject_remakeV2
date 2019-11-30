@@ -33,7 +33,9 @@ public class Splash extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splashscreen);
+        listSpin.add(0,"กรุณาเลือก");
         loadSpiinerData();
+
         handler = new Handler();
 
         runnable = new Runnable() {

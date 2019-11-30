@@ -454,4 +454,21 @@ public class MapFromList extends Fragment {
         });
 
     }
+    public boolean onBackPressed() {
+                path.clear();
+        a.getNewData().clear();
+        a.getNewData2().clear();
+        directAr.clear();
+        directAr2.clear();
+        distancefordirect.clear();
+
+        d.getPath().clear();
+        d.getNewData2().clear();
+        d.getDirectAr().clear();
+        d.getDirectAr2().clear();
+        d.getDistancefordirect().clear();
+
+        System.out.println("backkkkkkkkkkkkkkkkkkkkk88");
+        return false;
+    }
 }

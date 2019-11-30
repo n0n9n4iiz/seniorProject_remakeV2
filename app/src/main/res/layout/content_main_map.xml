@@ -35,7 +35,18 @@
                 android:id="@+id/currentspinner"
                 android:layout_width="232dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:spinnerMode="dialog"
+                tools:prompt="s"
+                tools:ignore="HardcodedText"
+                style="@android:style/Widget.Spinner" />
+
+            <Button
+                android:id="@+id/cQRbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="QR" />
 
         </LinearLayout>
 
