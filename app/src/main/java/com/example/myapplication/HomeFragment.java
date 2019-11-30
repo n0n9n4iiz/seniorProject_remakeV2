@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.map_btn :
 
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,new SettingFragment()).addToBackStack(null);
+                fragmentTransaction.replace(R.id.main_container,new MainMap()).addToBackStack(null);
                 fragmentTransaction.commit();
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Map");
             break;

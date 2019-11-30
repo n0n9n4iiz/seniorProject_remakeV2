@@ -8,4 +8,27 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="currentlocationSpinner" id="currentlocationSpinner">กรุณาเลือกตำแหน่งปัจจุบันของคุณ</string>
+    <string name="current_text_show">ตำแหน่งปัจจุบันของฉัน</string>
+    <string name="destination_text_show">จุดหมายของฉัน</string>
+    <string name="next_text">เริ่มนำทาง</string>
+    <string name="lost_text">หลงทาง</string>
+    <string name="selectcurrent_text">กรุณาเลือกหรือสแกนคิวอาร์โค้ด \n เพื่อระบุตำแหน่งปัจจุบันของคุณ</string>
+    <string name="confirmtext">ยืนยันตำแหน่งที่เลือก</string>
+    <string-array name="namespin">
+        <item>-- เลือกสถานที่ --</item>
+        <item>toilet</item>
+        <item>1401</item>
+        <item>1402</item>
+        <item>1403</item>
+        <item>1404</item>
+        <item>1405</item>
+        <item>1406</item>
+        <item>1407</item>
+        <item>1408</item>
+        <item>visual</item>
+    </string-array>
+    <string name="title_activity_main_map">แผนที่</string>
 </resources>

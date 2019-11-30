@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -84,9 +83,9 @@ NavigationView navigationView;
                     break;
                     //for map
                     case R.id.set_id : fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.main_container,new SettingFragment()).addToBackStack(null);
+                    fragmentTransaction.replace(R.id.main_container,new MainMap()).addToBackStack(null);
                     fragmentTransaction.commit();
-                    getSupportActionBar().setTitle("Setting");
+                    getSupportActionBar().setTitle("Map");
 //                    menuItem.setChecked(true);
                     menuItem.setCheckable(false);
                     drawerLayout.closeDrawers();

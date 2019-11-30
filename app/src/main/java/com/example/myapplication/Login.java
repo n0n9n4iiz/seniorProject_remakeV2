@@ -40,11 +40,21 @@ public class Login extends AppCompatActivity implements DatePickerDialog.OnDateS
     private String check;
     private String currentDateString;
     private ArrayList<DataLogin> dataLogins = new ArrayList<>();
+    private String teststring1;
+    public Login (){
+    }
+    public Login (String teststring){
+        System.out.println("55555"+teststring);
+        teststring1 = teststring;
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
+        System.out.println("44444"+teststring1);
         final Animation animScale = AnimationUtils.loadAnimation(this, R.anim.anim_scale);
 
         //--login
