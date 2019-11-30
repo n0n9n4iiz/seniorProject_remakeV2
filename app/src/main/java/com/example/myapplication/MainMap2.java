@@ -180,8 +180,6 @@ public class MainMap2 extends Fragment {
         path.clear();
         a1.getNewData().clear();
         a1.getNewData2().clear();
-
-
         d1.getPath().clear();
         d1.getNewData2().clear();
         d1.getDirectAr().clear();
