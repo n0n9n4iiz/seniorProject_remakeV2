@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -41,7 +43,8 @@ public class Login extends AppCompatActivity implements DatePickerDialog.OnDateS
     private String check;
     private String currentDateString;
     private ArrayList<DataLogin> dataLogins = new ArrayList<>();
-    private String teststring1;
+    FragmentTransaction fragmentTransaction;
+    Toolbar toolbar;
     public Login (){
     }
     @Override
@@ -50,9 +53,9 @@ public class Login extends AppCompatActivity implements DatePickerDialog.OnDateS
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
-        System.out.println("44444"+teststring1);
         final Animation animScale = AnimationUtils.loadAnimation(this, R.anim.anim_scale);
-
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         //--login
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -78,9 +81,10 @@ public class Login extends AppCompatActivity implements DatePickerDialog.OnDateS
         txt_gen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(view.getContext(),NormalUser.class);
-//                i.putExtra("status","0");
-//                startActivity(i);
+                Intent i = new Intent(Login.this,Main2Activity.class);
+                i.putExtra("status","0");
+                startActivity(i);
+
             }
         });
     }
@@ -141,6 +145,8 @@ public class Login extends AppCompatActivity implements DatePickerDialog.OnDateS
         }
 
     }
+
+
 
     public void openDialog(){
         DialogErrLogin errLogin = new DialogErrLogin();
