@@ -36,17 +36,13 @@ public class Login extends AppCompatActivity implements DatePickerDialog.OnDateS
     private Button btn_login;
     static String login ="";
     private int idlogin;
+    private int hn;
     private int idc_int;
     private String check;
     private String currentDateString;
     private ArrayList<DataLogin> dataLogins = new ArrayList<>();
     private String teststring1;
     public Login (){
-    }
-    public Login (String teststring){
-        System.out.println("55555"+teststring);
-        teststring1 = teststring;
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,12 +128,14 @@ public class Login extends AppCompatActivity implements DatePickerDialog.OnDateS
     }
     public void nextActivity(){
         System.out.println(login);
+        System.out.println("login hn :"+hn);
         if(login.equals("0")){
             openDialog();
         }else {
 
             Intent i = new Intent(this, MainActivity.class);
             i.putExtra("idlogin",idlogin);
+            i.putExtra("hn",hn);
             startActivity(i);
             CustomIntent.customType(this,"left-to-right");
         }

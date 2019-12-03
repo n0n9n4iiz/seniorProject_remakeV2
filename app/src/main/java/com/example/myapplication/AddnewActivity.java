@@ -58,7 +58,7 @@ View v;
     private int hn;
     Context context;
     private String dateToday;
-    private ArrayList<Data> arrdatanew = new ArrayList<>();
+    public static ArrayList<Data> arrdatanew = new ArrayList<>();
 //    MyActivity myActivity = new MyActivity();
     SwipeRecyclerViewAdapter s;
     private RecyclerView rc;
@@ -75,6 +75,8 @@ View v;
     public AddnewActivity(){
 
     }
+    Dijkstra a1 =new Dijkstra();
+    Drawline d1 =new Drawline();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -105,11 +107,11 @@ View v;
                 dr.setDate(btn_datepicker.getText().toString()+"");
                 dr.setHn(hn);
                 dr.setRoom(room);
-                if (dr.getRoom() == "-- เลือกสถานที่ --" && dr.getDate() == "") {
+                if (dr.getRoom() == "กรุณาเลือก" && dr.getDate() == "") {
                     Toast.makeText(view.getContext(),"กรุณาเลือกวันที่และสถานที",Toast.LENGTH_SHORT).show();
                 }else if(dr.getDate() == ""){
                     Toast.makeText(view.getContext(),"กรุณาเลือกวันที่",Toast.LENGTH_SHORT).show();
-                }else if(dr.getRoom() == "-- เลือกสถานที่ --"){
+                }else if(dr.getRoom() == "กรุณาเลือก"){
                     Toast.makeText(view.getContext(),"กรุณาเลือกสถานที่",Toast.LENGTH_SHORT).show();
                 }else if(Integer.parseInt(dr.getDate().substring(6,10)) >= Integer.parseInt(dateToday.substring(6,10))){
                     if(Integer.parseInt(dr.getDate().substring(3,5)) < Integer.parseInt(dateToday.substring(3,5))){
@@ -226,6 +228,14 @@ View v;
                     }
                 }
                 System.out.println("Success");
+//                if(SwipeRecyclerViewAdapter.studentList.isEmpty()){
+//                    MyActivity.mRecyclerView.setVisibility(View.GONE);
+//                    MyActivity.tvEmptyTextView.setVisibility(View.VISIBLE);
+//
+//                }else{
+//                    MyActivity.mRecyclerView.setVisibility(View.VISIBLE);
+//                    MyActivity.tvEmptyTextView.setVisibility(View.GONE);
+//                }
                 s = new SwipeRecyclerViewAdapter(context,arrdatanew,AddnewActivity.this);
                 try {
                     MyActivity.mRecyclerView.setAdapter(s);
@@ -233,10 +243,10 @@ View v;
                     System.out.println(e);
                 }
                 //back
-//                fragmentTransaction = getFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.main_container,new MyActivity());
-//                fragmentTransaction.commit();
-//                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("My Activity");
+                fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_container,new MyActivity(id,hn));
+                fragmentTransaction.commit();
+
             }
 
             @Override
@@ -246,4 +256,18 @@ View v;
         });
     }
 
+    public boolean onBackPressed() {
+        try {
+            d1.setPath(null);
+            a1.getNewData().clear();
+            a1.getNewData2().clear();
+
+            d1.getPath().clear();
+            d1.getNewData2().clear();
+            d1.getDirectAr().clear();
+            d1.getDirectAr2().clear();
+            d1.getDistancefordirect().clear();
+        }catch (Exception e){}
+        return false;
+    }
 }

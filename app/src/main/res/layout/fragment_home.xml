@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF7F9"
+    android:background="#F3F7F7"
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -19,7 +19,7 @@
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="75dp"
-    android:src="@drawable/header01"
+    android:src="@drawable/logohos2"
 
     />
 
@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Map"
+                    android:text="แผนที่"
                     android:textColor="#636363"
                     android:textSize="20dp"
                     android:textStyle="bold"></TextView>
@@ -81,7 +81,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Click to find a location in the hospital "
+                    android:text="คลิกเพื่อค้นหาสถานที่ในโรงพยาบาล "
                     android:textAlignment="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -109,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="My Activity"
+                    android:text="รายการของฉัน"
                     android:textColor="#FF636363"
                     android:textSize="20dp"
                     android:textStyle="bold"></TextView>
@@ -123,7 +123,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Click to check your activities "
+                    android:text="คลิกเพื่อเช็ครายการที่ต้องไปวันนี้"
                     android:textAlignment="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Appointment"
+                    android:text="รายการนัด"
                     android:textColor="#636363"
                     android:textSize="20dp"
                     android:textStyle="bold"></TextView>
@@ -173,7 +173,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Click to check your appointment "
+                    android:text="คลิกเพื่อตรวจสอบรายการที่นัดหมาย"
                     android:textAlignment="center" />
 
             </LinearLayout>
@@ -202,7 +202,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="History"
+                    android:text="ประวัติ"
                     android:textColor="#FF636363"
                     android:textSize="20dp"
                     android:textStyle="bold"></TextView>
@@ -216,7 +216,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Click to check your history "
+                    android:text="คลิกเพื่อตรวจสอบประวัติรายการ"
                     android:textAlignment="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

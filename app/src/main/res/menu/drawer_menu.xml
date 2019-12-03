@@ -3,37 +3,41 @@
 <group android:checkableBehavior="single">
     <item
         android:id="@+id/home_id"
-        android:title="Home"
+        android:title="หน้าหลัก"
         android:icon="@drawable/ic_home_black_24dp"></item>
     <item
         android:id="@+id/set_id"
-        android:title="Map"
+        android:title="แผนที่"
         android:icon="@drawable/ic_map_black_24dp"></item>
     <item
         android:id="@+id/other-id"
-        android:title="My Activity"
+        android:title="รายการของฉัน"
         android:icon="@drawable/ic_list_black_24dp"></item>
-</group>
-    <group>
-    <item android:title="Action">
-        <menu>
-            <item android:title="Make an appointment"
-                android:icon="@drawable/ic_event_black_24dp"
-                android:id="@+id/maa">
-            </item>
-            <!--<item android:title="B"-->
-                <!--android:id="@+id/b">-->
-            <!--</item>-->
-            <!--<item android:title="C"-->
-                <!--android:id="@+id/c">-->
-            <!--</item>-->
-        </menu>
+    <item android:title="เพิ่มรายการ"
+        android:icon="@drawable/ic_event_black_24dp"
+        android:id="@+id/maa">
     </item>
-    </group>
+</group>
+    <!--<group>-->
+    <!--<item android:title="">-->
+        <!--<menu>-->
+            <!--<item android:title="เพิ่มรายการ"-->
+                <!--android:icon="@drawable/ic_event_black_24dp"-->
+                <!--android:id="@+id/maa">-->
+            <!--</item>-->
+            <!--&lt;!&ndash;<item android:title="B"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/b">&ndash;&gt;-->
+            <!--&lt;!&ndash;</item>&ndash;&gt;-->
+            <!--&lt;!&ndash;<item android:title="C"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/c">&ndash;&gt;-->
+            <!--&lt;!&ndash;</item>&ndash;&gt;-->
+        <!--</menu>-->
+    <!--</item>-->
+    <!--</group>-->
     <group>
-        <item android:title="Setting">
+        <item android:title="ตั้งค่า">
             <menu>
-                <item android:title="Logout"
+                <item android:title="ออกจากระบบ"
                     android:icon="@drawable/ic_exit_to_app_black_24dp"
                     android:id="@+id/logout">
                 </item>

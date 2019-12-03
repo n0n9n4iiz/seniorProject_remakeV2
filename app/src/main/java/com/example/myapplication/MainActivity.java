@@ -34,11 +34,11 @@ ActionBarDrawerToggle actionBarDrawerToggle;
 FragmentTransaction fragmentTransaction;
 NavigationView navigationView;
     int idlogin;
-    int hn ;
+    private int hn ;
     String name = "";
     View headerView;
     TextView tname,hnn;
-    ArrayList<Data> arrHN = new ArrayList<>();
+    public ArrayList<Data> arrHN = new ArrayList<>();
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://endproject62.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -54,7 +54,7 @@ NavigationView navigationView;
         for(Object f : fragmentList) {
             if(f instanceof MainMap2) {
                 handled = ((MainMap2)f).onBackPressed();
-//                System.out.println("backkkkkkkkkkkkkkkkkkkkk1");
+                System.out.println("backkkkkkkkkkkkkkkkkkkkk1");
                 if(handled) {
                     System.out.println("backkkkkkkkkkkkkkkkkkkkk2");
 
@@ -65,7 +65,7 @@ NavigationView navigationView;
             }
             if(f instanceof MapFromList) {
                 handled = ((MapFromList)f).onBackPressed();
-//                System.out.println("backkkkkkkkkkkkkkkkkkkkk1");
+                System.out.println("backkkkkkkkkkkkkkkkkkkkk1");
                 if(handled) {
                     System.out.println("Mapfrommlisssss");
 
@@ -74,7 +74,17 @@ NavigationView navigationView;
                     break;
                 }
             }
+            if(f instanceof AddnewActivity) {
+                handled = ((AddnewActivity)f).onBackPressed();
+                System.out.println("backkkkkkkkkkkkkkkkkkkkk1");
+                if(handled) {
+                    System.out.println("Mapfrommlisssss");
 
+
+
+                    break;
+                }
+            }
         }
 
         if(!handled) {
@@ -88,6 +98,7 @@ NavigationView navigationView;
         setContentView(R.layout.activity_main);
         Bundle bundle = getIntent().getExtras();
         idlogin = bundle.getInt("idlogin");
+        hn = bundle.getInt("hn");
         checkHN(idlogin);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,14 +106,15 @@ NavigationView navigationView;
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.main_container,new HomeFragment(idlogin,hn));
-        fragmentTransaction.commit();
-        getSupportActionBar().setTitle("Home");
         navigationView = findViewById(R.id.navigationview);
         headerView = navigationView.getHeaderView(0);
         tname = (TextView) headerView.findViewById(R.id.name);
         hnn = (TextView) headerView.findViewById(R.id.hnnumber);
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.main_container,new HomeFragment(idlogin,hn));
+        fragmentTransaction.commit();
+
+
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -113,16 +125,16 @@ NavigationView navigationView;
                 switch (menuItem.getItemId()){
 
                     case R.id.home_id :
-                        onBackPressed();
+//                        onBackPressed();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_container,new HomeFragment(idlogin,hn)).addToBackStack(null);
                     fragmentTransaction.commit();
-                    getSupportActionBar().setTitle("Home");
+                    getSupportActionBar().setTitle("หน้าหลัก");
 //                    menuItem.setChecked(true);
                     menuItem.setCheckable(false);
                     drawerLayout.closeDrawers();
-
                     break;
+
                     //for map
                     case R.id.set_id :
                     onBackPressed();
@@ -130,7 +142,7 @@ NavigationView navigationView;
                      fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_container,new MainMap2()).addToBackStack(null);
                     fragmentTransaction.commit();
-                    getSupportActionBar().setTitle("Map");
+                    getSupportActionBar().setTitle("แผนที่");
 //                    menuItem.setChecked(true);
                     menuItem.setCheckable(false);
                     drawerLayout.closeDrawers();
@@ -138,25 +150,21 @@ NavigationView navigationView;
 
                     case R.id.other_id :
                         onBackPressed();
-                    System.out.println(idlogin);
-                    System.out.println(hn);
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_container,new MyActivity(idlogin,hn)).addToBackStack(null);
                     fragmentTransaction.commit();
-                    getSupportActionBar().setTitle("My Activity");
+                    getSupportActionBar().setTitle("รายการของฉัน");
 //                    menuItem.setChecked(true);
                     menuItem.setCheckable(false);
                     drawerLayout.closeDrawers();
                     break;
 
                     case R.id.maa :
-                        onBackPressed();
-                        System.out.println(idlogin);
-                        System.out.println(hn);
+//                        onBackPressed();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.main_container,new AddnewActivity(idlogin,hn)).addToBackStack(null);
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Make an appointment");
+                        getSupportActionBar().setTitle("เพิ่มรายการ");
 //                        menuItem.setChecked(true);
                         menuItem.setCheckable(false);
                         drawerLayout.closeDrawers();
@@ -181,6 +189,7 @@ NavigationView navigationView;
     public void checkHN(int id){
 
         Call<List<Data>> call = api.getHN(id);
+
         call.enqueue(new Callback<List<Data>>() {
             @Override
             public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
@@ -191,6 +200,7 @@ NavigationView navigationView;
 
                     tname.setText(name);
                     hnn.setText(String.valueOf(hn));
+
                 }
             }
 
@@ -198,6 +208,7 @@ NavigationView navigationView;
             public void onFailure(Call<List<Data>> call, Throwable t) {
 
             }
+
         });
     }
 

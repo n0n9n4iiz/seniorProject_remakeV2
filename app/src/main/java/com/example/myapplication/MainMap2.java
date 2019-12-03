@@ -146,8 +146,18 @@ public class MainMap2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_main_map2, container, false);
+        path.clear();
+        a1.getNewData().clear();
+        a1.getNewData2().clear();
+
+        d1.getPath().clear();
+        d1.getNewData2().clear();
+        d1.getDirectAr().clear();
+        d1.getDirectAr2().clear();
+        d1.getDistancefordirect().clear();
         Splash s = new Splash();
         listSpin = s.getListSpin();
         v.findViewById(R.id.btnSearch).setOnClickListener(new View.OnClickListener() {

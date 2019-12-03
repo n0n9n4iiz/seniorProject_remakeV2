@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F3F7F7"
     tools:context=".SelectCurrentLocation">
 
         <LinearLayout
@@ -54,7 +55,7 @@
                     android:layout_marginBottom="30dp"
 
 
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorPrimary"
                     android:text="@string/confirmtext"
                     android:textSize="20dp" />
 

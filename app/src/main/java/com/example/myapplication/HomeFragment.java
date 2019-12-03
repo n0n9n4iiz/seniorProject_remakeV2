@@ -22,12 +22,15 @@ import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
     CarouselView  carouselView;
+    View v;
     private int[] img = new int[]{
             R.drawable.img1,R.drawable.img2,R.drawable.img3
     };
@@ -36,7 +39,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     };
     CardView map,myact,appointment,history;
     FragmentTransaction fragmentTransaction;
-    FragmentManager fragmentManager;
     Toolbar toolbar;
     int idlogin;
     int hn;
@@ -49,12 +51,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         this.hn = hn;
     }
 
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //-------------carousel
-        View v =  inflater.inflate(R.layout.fragment_home, container, false);
+
+         v =  inflater.inflate(R.layout.fragment_home, container, false);
+        System.out.println(hn);
         carouselView = v.findViewById(R.id.caro);
         carouselView.setPageCount(img.length);
         carouselView.setImageListener(new ImageListener() {
@@ -66,7 +74,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         carouselView.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
-                String url = "https://www.google.com/";
+                String url = "https://www.srth.moph.go.th/";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -75,7 +83,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
         //-------------Cardview click
         toolbar = (Toolbar) v.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Home");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("หน้าหลัก");
         map = (CardView) v.findViewById(R.id.map_btn);
         myact = (CardView) v.findViewById(R.id.myact_btn);
         appointment = (CardView) v.findViewById(R.id.appoint_btn);
@@ -89,6 +97,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return v;
     }
 
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -97,32 +106,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_container,new MainMap2()).addToBackStack(null);
                 fragmentTransaction.commit();
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Map");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("แผนที่");
             break;
 
             case R.id.myact_btn :
-                System.out.println(idlogin);
-                System.out.println(hn);
+
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_container,new MyActivity(idlogin,hn)).addToBackStack(null);
                 fragmentTransaction.commit();
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("My Activity");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("แผนที่");
 
             break;
             case R.id.appoint_btn :
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_container,new MeetingDate(idlogin,hn)).addToBackStack(null);
                 fragmentTransaction.commit();
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Appointment");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("รายการนัด");
                 break;
 
             case R.id.history_btn :
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_container,new History(idlogin,hn)).addToBackStack(null);
                 fragmentTransaction.commit();
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("History");
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("ประวัติ");
                 break;
         }
     }
+
 
 }

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -43,7 +45,6 @@ public class SelectCurrentLocation extends Fragment {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     PointService api = retrofit.create(PointService.class);
-
     //scan_btn
     private Button confirm_btn;
     private ImageButton scan_btn;
@@ -52,7 +53,7 @@ public class SelectCurrentLocation extends Fragment {
     private ArrayList<String> listSpin = new ArrayList<String>();
     //    private ArrayList<Integer> idofListSpin = new ArrayList<Integer>();
     private Spinner curentLocationSpinner;
-
+    Toolbar toolbar;
     int startPointID;
     int End;
     String nameRoomEndFromList;
@@ -80,7 +81,8 @@ public class SelectCurrentLocation extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_select_current_location, container, false);
-
+        toolbar = v.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("เลือกตำแหน่งปัจจุบันของคุณ");
         curentLocationSpinner = (Spinner) v.findViewById(R.id.currentlocationSpin);
         //getDetail();
         //QR
@@ -193,29 +195,12 @@ public class SelectCurrentLocation extends Fragment {
 
     public void loadSpiinerData() {
 
-        Call<List<Demo.Contributor>> call = api.getRoom("1");
-        call.enqueue(new Callback<List<Demo.Contributor>>() {
 
-            @Override
-            public void onResponse(Call<List<Demo.Contributor>> call, Response<List<Demo.Contributor>> response) {
-                List<Demo.Contributor> data = response.body();
-                for (Demo.Contributor d : data) {
-                    System.out.println("Roomapi" + d.p_name + "jaaa");
-                    listSpin.add(d.p_name);
-//                    idofListSpin.add(d.p_id);
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,s.getListSpin());
                     arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     curentLocationSpinner.setAdapter(arrayAdapter);
 
-                }
-            }
 
-            @Override
-            public void onFailure(Call<List<Demo.Contributor>> call, Throwable t) {
-                System.out.println("call failed");
-            }
-
-        });
     }
     public void getIdFromStartSpinner(String p_name) {
 

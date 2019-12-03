@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainMap2"
+    android:background="#F3F7F7"
     tools:showIn="@layout/fragment_main_map2">
     <LinearLayout
 
@@ -19,15 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingLeft="20dp">
 
             <ImageView
                 android:id="@+id/currentshow"
-                android:layout_width="wrap_content"
+                android:layout_width="115dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 app:srcCompat="@drawable/currentnew"
                 tools:srcCompat="@drawable/currentnew" />
 
@@ -35,16 +37,17 @@
                 android:id="@+id/currentspinner"
                 android:layout_width="232dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:spinnerMode="dialog"
                />
 
             <Button
                 android:id="@+id/cQRbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="QR" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/qrcode"
+                android:text="" />
 
         </LinearLayout>
 
@@ -53,11 +56,12 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal"
+            android:layout_marginRight="20dp"
             android:paddingLeft="20dp">
 
             <ImageView
                 android:id="@+id/destinationshow"
-                android:layout_width="wrap_content"
+                android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/marknew"
@@ -65,7 +69,7 @@
 
             <Spinner
                 android:id="@+id/destspinner"
-                android:layout_width="225dp"
+                android:layout_width="223dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
@@ -96,6 +100,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="81dp"
+            android:background="#ffffff"
             android:orientation="horizontal">
 
             <ImageView

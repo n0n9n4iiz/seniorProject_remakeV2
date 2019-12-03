@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F3F7F7"
     tools:context=".MeetingDate">
 
     <!-- TODO: Update blank fragment layout -->

@@ -38,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MyActivity extends Fragment {
 View v;
     Context context;
-    private TextView tvEmptyTextView;
+    public static TextView tvEmptyTextView;
     public static RecyclerView mRecyclerView;
     private ArrayList<Data> mDataSet;
     int idlogin;
@@ -53,9 +53,9 @@ View v;
     FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
 
-//    public MyActivity() {
-//        // Required empty public constructor
-//    }
+    public MyActivity() {
+        // Required empty public constructor
+    }
     public MyActivity(int idlogin,int hn) {
         this.idlogin = idlogin;
         this.hn = hn;
@@ -67,9 +67,9 @@ View v;
 
         v = inflater.inflate(R.layout.fragment_my, container, false);
         toolbar = (Toolbar) v.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("My Activity");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("รายการฉัน");
         tvEmptyTextView = (TextView) v.findViewById(R.id.empty_view);
-        // etv = (TextView) findViewById(R.id.empty_view2);
+        //etv = (TextView) findViewById(R.id.empty_view2);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mDataSet = new ArrayList<>();
@@ -99,17 +99,16 @@ View v;
 
                 mDataSet = new ArrayList<>(response.body());
 
-//                if(mDataSet.isEmpty()){
-//                    mRecyclerView.setVisibility(View.GONE);
-//                    tvEmptyTextView.setVisibility(View.VISIBLE);
-//
-//                }else{
-//                    mRecyclerView.setVisibility(View.VISIBLE);
-//                    tvEmptyTextView.setVisibility(View.GONE);
-//                }
-
                 SwipeRecyclerViewAdapter mAdapter = new SwipeRecyclerViewAdapter(context, mDataSet,MyActivity.this);
                 SwipeRecyclerViewAdapter setid = new SwipeRecyclerViewAdapter(idlogin);
+                if(SwipeRecyclerViewAdapter.studentList.isEmpty()){
+                    mRecyclerView.setVisibility(View.GONE);
+                    tvEmptyTextView.setVisibility(View.VISIBLE);
+
+                }else{
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                    tvEmptyTextView.setVisibility(View.GONE);
+                }
 
                 ((SwipeRecyclerViewAdapter) mAdapter).setMode(Attributes.Mode.Single);
 
@@ -145,7 +144,7 @@ View v;
         fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_container,new AddnewActivity(idlogin,hn)).addToBackStack(null);
         fragmentTransaction.commit();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Make an appointment");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("เพิ่มรายการ");
     }
 
 }
